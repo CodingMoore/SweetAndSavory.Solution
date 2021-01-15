@@ -37,3 +37,9 @@ h4 {
   padding-bottom: .3rem;
 }
 
+.warning {
+  text-align: center;
+  color: red;
+  font-size: 2rem;
+}
+
