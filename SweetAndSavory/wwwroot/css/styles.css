@@ -1,5 +1,13 @@
+body {
+  font-family: calibri;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
 .container {
-  background-color: rgb(134, 248, 204);
+  /* background-color: rgb(134, 248, 204); */
+  background-color: rgb(248, 134, 134);
+  
 }
 
 h1 {

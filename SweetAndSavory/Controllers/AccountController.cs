@@ -53,6 +53,11 @@ namespace SweetAndSavory.Controllers
         public async Task<ActionResult> Login(LoginViewModel model)
         {
             Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+            if(model.Email == null)
+            {
+                string loginFail = "A registered email address is required";
+                return View(loginFail);
+            }
             if (result.Succeeded)
             {
                 return RedirectToAction("Index");
