@@ -1,0 +1,37 @@
+@{
+  Layout = "_Layout";
+}
+
+@using SweetAndSavory.Models;
+
+<h1>Pierre's Sweet and Savory Treats</h1>
+
+<h3>Treats</h3>
+
+<p>@Html.ActionLink("Add a new Treat", "Create", "Treats")</p>
+
+@if(ViewBag.TreatList.Count == 0)
+{
+  <h4>No treats have been added yet!</h4>
+} 
+
+@foreach (Treat treat in ViewBag.Treats)
+{
+  <li>@Html.ActionLink($"{treat.TreatName}", "Details", "Treats", new { id = treat.TreatId })</li>
+}
+
+<h3>Flavors</h3>
+
+<p>@Html.ActionLink("Add a new Flavor", "Create", "Flavors")</p>
+
+@if(ViewBag.FlavorList.Count == 0)
+{
+  <h4>No flavors have been added yet!</h4>
+} 
+
+@foreach (Flavor flavor in ViewBag.Flavors)
+{
+  <li>@Html.ActionLink($"{flavor.FlavorName}", "Details", "Flavors", new { id = flavor.FlavorId })</li>
+}
+
+<br>

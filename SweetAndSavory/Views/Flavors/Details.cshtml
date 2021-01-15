@@ -1,0 +1,46 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetAndSavory.Models.Flavor
+
+<h2>Flavor Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.FlavorName): @Html.DisplayFor(model => model.FlavorName)</h3>
+<h3>@Html.DisplayNameFor(model => model.InstallDate): @Model.InstallDate.ToString("MM-dd-yyyy")</h3> 
+
+<br>
+
+@if(Model.JoinEntries.Count == 0)
+{
+  <h4>This flavor does not have any associated treats.</h4>
+}
+else
+{
+  <h4>Treats with this flavor:</h4>
+}
+
+<ul>
+  @foreach(var join in Model.JoinEntries)
+  {
+
+    <li>@Html.ActionLink($"{join.Treat.TreatName}", "Details", "Treats", new { id = join.Treat.TreatId })</li>
+
+    @using (Html.BeginForm("DeleteTreat", "Flavors"))
+    {
+      @Html.Hidden("joinId", @join.TreatFlavorId)
+      @Html.HiddenFor(model => model.FlavorId)
+    }
+  }
+</ul>
+
+<br>
+
+@Html.ActionLink("Edit Flavor", "Edit", "Flavors", new {id = Model.FlavorId}, new { @class = "btn" })
+
+<br>
+<br>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+

@@ -1,0 +1,72 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetAndSavory.Models.Flavor
+
+<h2>Edit Flavor Details</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.FlavorId)
+
+    @Html.LabelFor(model => model.FlavorName)
+    @Html.EditorFor(model => model.FlavorName)
+
+    @Html.LabelFor(model => model.InstallDate)
+    @Html.TextBoxFor(model => model.InstallDate, "{0:yyyy-MM-dd}", new { @type = "date" })
+
+    <br>
+    <br>
+
+    <input type="submit" value="Save Details" />
+}
+
+<br>
+<br>
+
+<h2>Add/Remove Treats</h2>
+
+@if(Model.JoinEntries.Count == 0)
+{
+  <p>This flavor does not have any associated treats.</p>
+}
+else
+{
+  <h4>Treats with this flavor:</h4>
+}
+
+<ul>
+  @foreach(var join in Model.JoinEntries)
+  {
+    <li>@join.Treat.TreatName</li>
+    @using (Html.BeginForm("DeleteTreat", "Flavors"))
+    {
+      @Html.Hidden("joinId", @join.TreatFlavorId)
+      @Html.HiddenFor(model => model.FlavorId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+</ul>
+
+@using (Html.BeginForm("AddTreat", "Flavors"))
+{
+  @Html.HiddenFor(model => model.FlavorId)
+
+  @Html.Label("Add an Treat")
+  @Html.DropDownList("TreatId", "*select*")
+  
+  <input type="submit" value="Add"/>
+
+}
+
+<br>
+<br>
+
+<p>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId }, new { @class = "btn" })</p>
+
+<br>
+<br>
+
+<p>@Html.ActionLink("Back to Details", "Details", new { id = Model.FlavorId })</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
