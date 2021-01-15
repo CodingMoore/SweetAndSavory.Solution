@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace SweetAndSavory.Controllers
 {
@@ -16,6 +20,7 @@ namespace SweetAndSavory.Controllers
       _db = db;
     }
 
+    [Authorize]
     public ActionResult Create()
     {
       return View();
@@ -38,6 +43,7 @@ namespace SweetAndSavory.Controllers
       return View(thisFlavor);
     }
 
+    [Authorize]
     public ActionResult Edit(int id)
     {      
       var thisFlavor = _db.Flavors
@@ -71,6 +77,7 @@ namespace SweetAndSavory.Controllers
       return RedirectToAction("Details", new {id = flavor.FlavorId});
     }   
 
+    [Authorize]
     public ActionResult Delete(int id)
     {
       var thisFlavor = _db.Flavors.FirstOrDefault(flavors => flavors.FlavorId == id);
