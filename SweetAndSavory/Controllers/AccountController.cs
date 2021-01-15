@@ -45,8 +45,9 @@ namespace SweetAndSavory.Controllers
             }
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -56,7 +57,14 @@ namespace SweetAndSavory.Controllers
             Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
             if (result.Succeeded)
             {
-                return Redirect(model.ReturnUrl);
+                if (!string.IsNullOrEmpty(model.ReturnUrl))
+                {
+                    return Redirect(model.ReturnUrl);
+                }
+                else
+                {
+                    return RedirectToAction("/", "Home");
+                }
             }
             else
             {
