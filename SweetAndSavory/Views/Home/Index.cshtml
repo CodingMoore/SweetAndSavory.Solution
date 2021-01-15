@@ -8,7 +8,7 @@
 
 <h3>Treats</h3>
 
-<p>@Html.ActionLink("Add a new Treat", "Create", "Treats")</p>
+<p>@Html.ActionLink("Add a new Treat", "Create", "Treats", new { route = "Treats/Create"})</p>
 
 @if(ViewBag.TreatList.Count == 0)
 {
