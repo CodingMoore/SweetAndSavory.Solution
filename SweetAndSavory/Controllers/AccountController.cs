@@ -40,6 +40,7 @@ namespace SweetAndSavory.Controllers
             }
             else
             {
+                ViewBag.loginFail = true;
                 return View();
             }
         }
