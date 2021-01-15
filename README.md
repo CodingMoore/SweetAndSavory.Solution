@@ -1,6 +1,6 @@
 # **SweetAndSavory.Solution**
-Project Initiated: 2021-01-08<br>
-Updated: 2021-01-011
+Project Initiated: 2021-01-15<br>
+Updated: 2021-01-15
 
 ## **Project Description**
 
@@ -111,29 +111,29 @@ Then open MySQL Workbench and select the Local instance 3306 server. You will ne
 ### **Install/Setup Project** ###
 
 **Option 1** (download zip file)
-1) Copy and paste the following GitHub project link into your web browser's url bar and hit enter/return. https://github.com/RMGit-it/Factory.Solution.git
+1) Copy and paste the following GitHub project link into your web browser's url bar and hit enter/return. https://github.com/RMGit-it/SweetAndSavory.Solution.git
 2) Download a .zip copy the repository by clicking on the large green "Code" button near the upper right corner of the screen.
 3) Right click the .zip file and extract(unzip) it's contents.
-4) Open your computer's terminal/console, and navigate to folder called "__Factory.Solution__". 
+4) Open your computer's terminal/console, and navigate to folder called "__SweetAndSavory.Solution__". 
 
 
 **Option 2** (via git console/terminal)
 1) Open your Git enabled terminal/console and navigate to a directory that you wish to download this project to.
 2) Type the following line of code into your terminal/console to automatically download the project to your current direcory and hit return/enter
 
-    <code>git clone https://github.com/RMGit-it/Factory.Solution.git</code>
+    <code>git clone https://github.com/RMGit-it/SweetAndSavory.Solution.git</code>
 
-3) Once the project has finished downloading, use the terminal/console to navigate to the "__Factory.Solution__" folder of the project.
+3) Once the project has finished downloading, use the terminal/console to navigate to the "__SweetAndSavory.Solution__" folder of the project.
 
 
 **Setup Database Connection**
 
-Create a new file in the root directory of the __Factory.Solution/Factory__ directory named "appsettings.json".  Copy and past the following code inside of the file.
+Create a new file in the root directory of the _SweetAndSavory.Solution/SweetAndSavory__ directory named "appsettings.json".  Copy and past the following code inside of the file.
 
 ```
 {
   "ConnectionStrings": {
-      "DefaultConnection": "Server=localhost;Port=3306;database=randel_moore_factory;uid=YourId;pwd=YourPassword;"
+      "DefaultConnection": "Server=localhost;Port=3306;database=randel_moore_sweetandsavory;uid=YourId;pwd=YourPassword;"
   }
 }
 ```
