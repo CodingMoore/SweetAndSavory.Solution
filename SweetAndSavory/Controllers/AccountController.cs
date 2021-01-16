@@ -25,7 +25,7 @@ namespace SweetAndSavory.Controllers
         }
 
         public IActionResult Register()
-        {
+        {   
             return View();
         }
 
@@ -63,7 +63,7 @@ namespace SweetAndSavory.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("/", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
             }
             else
