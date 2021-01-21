@@ -1,20 +1,18 @@
 # **SweetAndSavory.Solution**
 Project Initiated: 2021-01-15<br>
-Updated: 2021-01-15
+Updated: 2021-01-21
 
 ## **Project Description**
 
-This project was created to help us further our knowledge with using join statements to help connect tables in our database. We are also practicing with using many to many relationships within our application and database tables. This application is designed to help a factory owner keep track of the machines used in their factory(s) and the engineers that maintain these machines.  The User Story is below.
+This project is an exercise in creating an ASP.NET Core MVC application with database integration using a many-to-many relationship, Full CRUD implementation, and Identity authorization.
 
-//USER STORIES PUT IN TABLE (optional)
-* As the factory manager, I need to be able to see a list of all engineers, and I need to be able to see a list of all machines.
-* As the factory manager, I need to be able to select a engineer, see their details, and see a list of all machines that engineer is licensed to repair. I also need to be able to select a machine, see its details, and see a list of all engineers licensed to repair it.
-* As the factory manager, I need to add new engineers to our system when they are hired. I also need to add new machines to our system when they are installed.
-* As the factory manager, I should be able to add new machines even if no engineers are employed. I should also be able to add new engineers even if no machines are installed
-* As the factory manager, I need to be able to add or remove machines that a specific engineer is licensed to repair. I also need to be able to modify this relationship from the other side, and add or remove engineers from a specific machine.
-* As the factory manager, I should be able to navigate to a splash page that lists all engineers and machines. Users should be able to click on an individual engineer or machine to see all the engineers/machines that belong to it.
+Coding Prompt:
 
+Pierre is back! He wants you to create a new application to market his sweet and savory treats. This time, he would like you to build an application with user authentication and a many-to-many relationship. Here are the features he wants in the application:
 
+* The application should have user authentication. A user should be able to log in and log out. Only logged in users should have create, update and delete functionality. All users should be able to have read functionality.
+* There should be a many-to-many relationship between Treats and Flavors. A treat can have many flavors (such as sweet, savory, spicy, or creamy) and a flavor can have many treats. For instance, the "sweet" flavor could include chocolate croissants, cheesecake, and so on.
+* A user should be able to navigate to a splash page that lists all treats and flavors. Users should be able to click on an individual treat or flavor to see all the treats/flavors that belong to it.
 
 ## **Required for Use**
 * C# and .Net Core installed on your local machine. (Developed on .Net Core v2.2.4)
@@ -145,8 +143,6 @@ Type the following code and hit enter/return to install the necessary dependenci
 
 Once the dependencies have installed, type the following commands into your console, hitting enter/return after each.
 
-<code>dotnet ef migrations add Initial</code>
-
 <code>dotnet ef database update</code>
 
 
@@ -155,68 +151,6 @@ You can now type the follow code to launch the program...
 <code>dotnet run</code>
 
 The program should launch using your default web browser at URL: localhost:5000.
-
-## **SQL Schema Diagram**
-<img src="./readme_assests/factory_schema_diagram.PNG" alt="Factor Schema" style="float: left" />
-
-## **SQL Schema**
-
-```
-CREATE DATABASE  IF NOT EXISTS `randel_moore_factory`;
-USE `randel_moore_factory`;
-
-DROP TABLE IF EXISTS `__efmigrationshistory`;
-CREATE TABLE `__efmigrationshistory` (
-  `MigrationId` varchar(95) NOT NULL,
-  `ProductVersion` varchar(32) NOT NULL,
-  PRIMARY KEY (`MigrationId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-LOCK TABLES `__efmigrationshistory` WRITE;
-INSERT INTO `__efmigrationshistory` VALUES ('20210108173230_Initial','2.2.4-servicing-10062'),('20210108180809_Add_Machine_Istall_Date','2.2.4-servicing-10062'),('20210110203536_DateTimeToStringTest','2.2.4-servicing-10062'),('20210110204421_StringToDateTimeReset','2.2.4-servicing-10062');
-UNLOCK TABLES;
-
-DROP TABLE IF EXISTS `engineermachine`;
-CREATE TABLE `engineermachine` (
-  `EngineerMachineId` int NOT NULL AUTO_INCREMENT,
-  `EngineerId` int NOT NULL,
-  `MachineId` int NOT NULL,
-  PRIMARY KEY (`EngineerMachineId`),
-  KEY `IX_EngineerMachine_EngineerId` (`EngineerId`),
-  KEY `IX_EngineerMachine_MachineId` (`MachineId`),
-  CONSTRAINT `FK_EngineerMachine_Engineers_EngineerId` FOREIGN KEY (`EngineerId`) REFERENCES `engineers` (`EngineerId`) ON DELETE CASCADE,
-  CONSTRAINT `FK_EngineerMachine_Machines_MachineId` FOREIGN KEY (`MachineId`) REFERENCES `machines` (`MachineId`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-LOCK TABLES `engineermachine` WRITE;
-INSERT INTO `engineermachine` VALUES (51,13,10),(52,13,11),(53,5,8),(54,5,9),(55,5,10),(56,5,11),(57,5,12),(58,6,10),(61,9,12),(62,9,8),(63,10,9),(64,10,11),(65,13,12),(66,14,9),(67,14,11);
-UNLOCK TABLES;
-
-DROP TABLE IF EXISTS `engineers`;
-CREATE TABLE `engineers` (
-  `EngineerId` int NOT NULL AUTO_INCREMENT,
-  `StartDate` datetime(6) NOT NULL,
-  `EngineerName` longtext,
-  PRIMARY KEY (`EngineerId`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-LOCK TABLES `engineers` WRITE;
-INSERT INTO `engineers` VALUES (5,'2021-01-08 00:00:00.000000','Kiki Smith'),(6,'2020-11-20 00:00:00.000000','Jackson Pollock'),(9,'2020-06-10 00:00:00.000000','Bob Ross'),(10,'2021-01-02 00:00:00.000000','Yayoi Kusama'),(13,'2020-07-19 00:00:00.000000','Marilyn Minter'),(14,'2020-06-20 00:00:00.000000','Rick Bartow');
-UNLOCK TABLES;
-
-DROP TABLE IF EXISTS `machines`;
-CREATE TABLE `machines` (
-  `MachineId` int NOT NULL AUTO_INCREMENT,
-  `MachineName` longtext,
-  `InstallDate` datetime(6) NOT NULL,
-  PRIMARY KEY (`MachineId`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-LOCK TABLES `machines` WRITE;
-INSERT INTO `machines` VALUES (8,'The Fluff-If-Fier','2020-11-01 00:00:00.000000'),(9,'The Inspect-O-Matic','2020-09-24 00:00:00.000000'),(10,'The Dimpler','2021-01-01 00:00:00.000000'),(11,'The Shineification Machine','2020-12-19 00:00:00.000000'),(12,'Hal 9000','2001-01-01 00:00:00.000000');
-UNLOCK TABLES;
-```
-## **Usage / Examples**
 
 ## **Planned Features**
 No new features are planned at this time.
@@ -228,6 +162,7 @@ There are no known bugs
 * C# 7.3
 * .NET Core 2.2
 * Entity
+* Identity
 * Git
 * MySQL
 * CSS
