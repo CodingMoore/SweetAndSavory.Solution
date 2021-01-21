@@ -13,8 +13,8 @@
     @Html.LabelFor(model => model.TreatName)
     @Html.EditorFor(model => model.TreatName)
 
-    @Html.LabelFor(model => model.StartDate)
-    @Html.TextBoxFor(model => model.StartDate, "{0:yyyy-MM-dd}", new { @type = "date" })
+    @Html.LabelFor(model => model.DateAdded)
+    @Html.TextBoxFor(model => model.DateAdded, "{0:yyyy-MM-dd}", new { @type = "date" })
 
     <br>
     <br>
@@ -69,4 +69,3 @@ else
 <br>
 
 <p>@Html.ActionLink("Back to Details", "Details", new { id = Model.TreatId })</p>
-<p>@Html.ActionLink("Home", "Index", "Home")</p>

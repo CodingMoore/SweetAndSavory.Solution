@@ -33,15 +33,3 @@
 {
   <li>@Html.ActionLink($"{flavor.FlavorName}", "Details", "Flavors", new { id = flavor.FlavorId })</li>
 }
-
-<br>
-
-<p>@Html.ActionLink("Create an account", "Register", "Account")</p>
-<p>@Html.ActionLink("Login", "Login", "Account")</p>
-@if (User.Identity.IsAuthenticated)
-{
-    @using (Html.BeginForm("LogOff", "Account"))
-    {
-        <input type="submit" class="btn btn-default" value="Log out" />
-    }
-}

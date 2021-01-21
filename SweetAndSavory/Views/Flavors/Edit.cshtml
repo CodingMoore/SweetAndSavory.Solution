@@ -13,8 +13,8 @@
     @Html.LabelFor(model => model.FlavorName)
     @Html.EditorFor(model => model.FlavorName)
 
-    @Html.LabelFor(model => model.InstallDate)
-    @Html.TextBoxFor(model => model.InstallDate, "{0:yyyy-MM-dd}", new { @type = "date" })
+    @Html.LabelFor(model => model.DateAdded)
+    @Html.TextBoxFor(model => model.DateAdded, "{0:yyyy-MM-dd}", new { @type = "date" })
 
     <br>
     <br>
@@ -69,4 +69,3 @@ else
 <br>
 
 <p>@Html.ActionLink("Back to Details", "Details", new { id = Model.FlavorId })</p>
-<p>@Html.ActionLink("Home", "Index", "Home")</p>

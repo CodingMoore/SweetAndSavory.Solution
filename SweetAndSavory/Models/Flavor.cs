@@ -14,9 +14,9 @@ namespace SweetAndSavory.Models
 
     public int FlavorId { get; set; }
 
-    [DisplayName("Install Date")]
+    [DisplayName("Date Added")]
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-    public DateTime InstallDate { get; set; }
+    public DateTime DateAdded { get; set; }
 
     [DisplayName("Flavor Name")]
     public string FlavorName { get; set; }

@@ -11,12 +11,8 @@
     @Html.LabelFor(model => model.TreatName)
     @Html.TextBoxFor(model => model.TreatName)
 
-    @Html.LabelFor(model => model.StartDate)
-    @Html.TextBoxFor(model => model.StartDate, new { @type = "date"})
+    @Html.LabelFor(model => model.DateAdded)
+    @Html.TextBoxFor(model => model.DateAdded, new { @type = "date"})
 
     <input type="submit" value="Add new Treat" class="btn btn-default" />
 }
-
-<br>
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p>

@@ -7,7 +7,7 @@
 <h2>Flavor Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.FlavorName): @Html.DisplayFor(model => model.FlavorName)</h3>
-<h3>@Html.DisplayNameFor(model => model.InstallDate): @Model.InstallDate.ToString("MM-dd-yyyy")</h3> 
+<h3>@Html.DisplayNameFor(model => model.DateAdded): @Model.DateAdded.ToString("MM-dd-yyyy")</h3> 
 
 <br>
 
@@ -37,10 +37,3 @@ else
 <br>
 
 @Html.ActionLink("Edit Flavor", "Edit", "Flavors", new {id = Model.FlavorId}, new { @class = "btn" })
-
-<br>
-<br>
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
-
-

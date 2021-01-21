@@ -13,9 +13,9 @@ namespace SweetAndSavory.Models
         }
         public int TreatId { get; set; }
 
-        [DisplayName("Start Date")]
+        [DisplayName("Date Added")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime StartDate { get; set; }
+        public DateTime DateAdded { get; set; }
 
         [DisplayName("Treat Name")]
         public string TreatName { get; set; }
