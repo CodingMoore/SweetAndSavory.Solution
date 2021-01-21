@@ -6,6 +6,8 @@
 
 @model LoginViewModel
 
+@* @(LoginViewModel.ReturnUrl = ViewBag.ReturnUrl) *@
+
 <h2>Log in with your account</h2>
 
 @if (ViewBag.loginFail == true)

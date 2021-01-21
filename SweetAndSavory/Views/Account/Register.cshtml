@@ -7,10 +7,19 @@
 @model RegisterViewModel
 
 <h2>Register a new user</h2>
-@if (ViewBag.loginFail == true)
+@if (ViewBag.RegisterFail == true)
 {
 <p class="warning">Registration attempt failed!</p>
+<p>Pease make sure that you are entering a valid email address.</p>
+<p>Please make sure that your password contains at least 6 characters, 1 special character, 1 capital letter, and 1 number.</p>
 }
+
+@if (ViewBag.NameInUse == true)
+{
+  <p class="warning">Registration attempt failed!</p>
+  <p>That email address is already registered.</p>
+}
+
 <hr />
 @using (Html.BeginForm("Register", "Account", FormMethod.Post))
 {

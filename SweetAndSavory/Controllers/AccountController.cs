@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using SweetAndSavory.Models;
 using System.Threading.Tasks;
 using SweetAndSavory.ViewModels;
+using System;
 
 namespace SweetAndSavory.Controllers
 {
@@ -34,13 +35,19 @@ namespace SweetAndSavory.Controllers
         {
             var user = new ApplicationUser { UserName = model.Email };
             IdentityResult result = await _userManager.CreateAsync(user, model.Password);
-            if (result.Succeeded)
+            if (result.ToString() == "Succeeded")
             {
                 return RedirectToAction("Index");
             }
+            else if(result.ToString() == "Failed : DuplicateUserName")
+            {
+                ViewBag.NameInUse = true;
+                Console.WriteLine(ViewBag.NameInUse);
+                return View();
+            }
             else
             {
-                ViewBag.loginFail = true;
+                ViewBag.RegisterFail = true;
                 return View();
             }
         }
